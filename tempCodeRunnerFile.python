@@ -1,0 +1,29 @@
+def laundry():
+    N, M = map(int, input().split())
+    F = list(map(int, input().split()))
+    X = list(map(int, input().split()))
+
+    listh = []
+    s = 0
+    for f in F:
+        s = s + f
+        listh.append(s)
+
+    for x in X:
+        l = 0
+        r = N - 1
+        count = 0
+        while l <= r:
+            m = (l + r) // 2
+            if listh[m] >= x:
+                hasil = m
+                r = m - 1
+            else:
+                l = m + 1
+        if hasil == 0:
+            kamar = x
+        else:
+            kamar = x - listh[hasil - 1]
+        print(hasil + 1, kamar)
+
+laundry()
